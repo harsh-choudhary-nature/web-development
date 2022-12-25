@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Code Player</title>
+        <script src="script/jquery-3.6.2.min.js"></script>
+        
+        <style type="text/css">
+            body{
+                margin: 0px;
+                font-family: Arial, Helvetica, sans-serif;
+                padding:0px;
+            }
+            #topbar{
+                background-color: #ededed;
+                height:50px;
+            }
+            #logo{
+                font-size: 25px;
+                font-weight: bold;
+                padding: 7px 15px;
+                float:left;
+            }
+            #buttons{
+                margin: 0 auto;
+                width: 300px;
+                padding: 10px 0px;
+            }
+            .button{
+                text-align: center;
+                font-size:120% ;
+                margin: 0px;
+                float: left;
+                border-radius: 0%;
+                border: 1px solid grey;
+                border-left:0px solid black ;
+                padding: 4px 5px;
+            }
+            #html{
+                border-left: 1px solid grey;
+                border-top-left-radius: 5px;
+                border-bottom-left-radius: 5px;
+            }
+            #output{
+                border-top-right-radius: 5px;
+                border-bottom-right-radius: 5px;
+            }
+            .highlighted{
+                background-color:/*#ebf3ff;*/ yellow;
+            }
+            .active{
+                background-color:/* #e8f2ff;*/ greenyellow;
+            }
+            textarea{
+                border-top: none;
+                border-bottom: none;
+                resize: none;
+            }
+            .columns{
+                float: left;
+            }
+            #outputcolumn{
+                border: none;
+            }
+            .hidden{
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="topbar">
+                <div id="logo">CodePlayer</div>
+                <div id="buttons">
+                    <button class="button active" id="html">HTML</button>
+                    <button class="button" id="css">CSS</button>
+                    <button class="button" id="javascript">JavaSscript</button>
+                    <button class="button active" id="output">Output</button>
+                </div>
+            </div>
+            <div id="mainsection">
+                <textarea id="htmlcolumn" class="columns"><p id="paragraph">Hello World! </p>
+                </textarea>
+                <textarea id="csscolumn" class="columns hidden">p{color:green;}
+                </textarea>
+                <textarea id="javascriptcolumn" class="columns hidden"> alert("done");
+                </textarea>
+                <iframe id="outputcolumn" class="columns">
+
+                </iframe>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(".button").hover(function(){
+                $(this).addClass("highlighted");
+            },function(){
+                $(this).removeClass("highlighted");
+            });
+
+            $(".button").click(function(){
+                $(this).toggleClass("active");
+                $(this).removeClass("highlighted");
+                $("#"+$(this).attr("id")+"column").toggleClass("hidden");
+                var numhidden=$(".hidden").length;
+                var numvisible=4-numhidden;
+                $(".columns").width($(window).width()/numvisible-6);
+            });
+
+            function updatecssjsoutput(){
+                $("#outputcolumn").contents().find("html").html(
+                    "<html><head><style>"+
+                    $("#csscolumn").val()+"</style></head><body>"+
+                    $("#htmlcolumn").val()+"</body></html>");
+
+                    document.getElementById("outputcolumn").contentWindow.eval($("#javascriptcolumn").val());
+            }
+            /*iframes dont allow javascript*/
+            $("#outputcolumn").contents().find("html").html($("#htmlcolumn").val());
+            updatecssjsoutput();  
+
+            $("#htmlcolumn").on("change keyup paste", function () {
+                $("#outputcolumn").contents().find("html").html($("#htmlcolumn").val());
+                updatecssjsoutput();  
+            });
+            $("#csscolumn").on("change keyup paste", function () {
+                updatecssjsoutput();
+            });
+            $("#javascriptcolumn").on("change keyup paste", function () {
+                updatecssjsoutput();
+            });
+
+            $("textarea").height($(window).height()-$("#topbar").height());
+            $(".columns").width(($(window).width()/2)-5);
+        </script>
+    </body>
+</html>

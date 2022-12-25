@@ -1,0 +1,179 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Techology-BBC news</title>
+        <meta charset="utf-8"/>
+        <meta http-equiv="content-type" content="text/html" charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+        <style type="text/css">
+            .top-div{
+                height:50px;
+            }
+            .red-div{
+                background-color:#bb1919;
+                height:100px;
+            }
+            .dark-red-div{
+                background-color: #a91717;
+                position:relative;
+                top:40px;
+                height:35px;
+            }
+            .box-style{
+                opacity: 0.9;
+                position:relative;
+                left:800px;
+                text-align:center;
+                top:25px;
+                font-size: 25px;
+                font-family: Arial, Helvetica, sans-serif;
+                border: #bbb 1px solid;
+                padding: 5px;
+            }
+            a{
+                color:white;
+                text-decoration:none;
+            }
+            a:hover{
+                text-decoration: underline;
+            }
+            .box-style:hover{
+                border-radius: 7px;
+                border: black 2.5px solid;
+            }
+            .box-style-news{
+                position:relative;
+                left:200px;
+                text-align:center;
+                top:25px;
+                font-size: 35px;
+                font-family: 'Times New Roman', Times, serif;
+                padding: 5px;
+                color:white;
+            }
+            .navbar-dark-red{
+                position:relative;
+                top:7px;
+                color:white;
+                padding: 5px;
+            }
+            .bottom-border:hover{
+                border-bottom:white 2px solid;
+            }
+            .drop-down:hover{
+                background-color: rgb(0, 0, 0);
+            }
+            .drop-down:hover .more-drop-down{
+                display: flex;
+                background-color: black;
+                position:relative;
+                left:1091px;
+                width:123px;
+            }
+            body{
+                margin:0px;
+                padding:0px;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            #topbar{
+                width:1000px;
+                margin:0 auto;
+                height:40px;
+            }
+            #logo{
+                width:100px;
+                height:30px;
+                margin-top:8px;
+                float:left;
+                margin-right:8px;   
+            }
+            .topbar-section{
+                border-left:1px grey solid;
+                height:100%;
+                float:left;
+            }
+            #signin{
+                height:30px;
+                width:30px;
+                margin:8px;
+                float:left;
+            }
+            #signin-text{
+                font-weight: bold;
+                font-size:90%;
+                position:relative;
+                top:10px;
+                padding-right:80px;
+            }
+            #bell-div{
+                border-left:1px grey solid;
+                height:100%;
+                float:left;
+                
+            }
+            #bell-img{
+                height:25px;
+                width:25px;
+                margin:10px 8px;
+            }
+            .topbar-menu{
+                font-weight: bold;
+                font-size:90%;
+                padding:10px;
+                
+            }
+        </style>
+
+        <body>
+            <div id="topbar">
+                <img id="logo" src="./img/BBC_Logo_2021.svg.png"/>
+                <div class="topbar-section" id="signin-div">
+                    <img id="signin" src="./img/signin1.jpg">
+                    <span id="signin-text">Sign in</span>
+                </div>
+                <div id="bell-div">
+                    <img id="bell-img" src="./img/bell1.jpg">
+                </div>
+                <div class="topbar-section topbar-menu">
+                    News
+                </div>
+            </div>
+            <div class="red-div">
+                <span class="box-style-news">N E W S</span>
+                <span class="box-style"><a href="/">Find Local news</a></span>
+                <div class="dark-red-div">
+                    <span class="navbar-dark-red bottom-border" style="margin-left:200px;">Home</span>
+                    <span class="navbar-dark-red" style="color:#bb1919">|</span>
+                    <span class="navbar-dark-red bottom-border">UK</span>
+                    <span class="navbar-dark-red" style="color:#bb1919">|</span>
+                    <span class="navbar-dark-red bottom-border">World</span>
+                    <span class="navbar-dark-red" style="color:#bb1919">|</span>
+                    <span class="navbar-dark-red bottom-border">Business</span>
+                    <span class="navbar-dark-red" style="color:#bb1919">|</span>
+                    <span class="navbar-dark-red bottom-border">Tech</span>
+                    <span class="navbar-dark-red" style="color:#bb1919">|</span>
+                    <span class="navbar-dark-red bottom-border">Science</span>
+                    <span class="navbar-dark-red" style="color:#bb1919">|</span>
+                    <span class="navbar-dark-red bottom-border">Health</span>
+                    <span class="navbar-dark-red" style="color:#bb1919">|</span>
+                    <span class="navbar-dark-red bottom-border">Education</span>
+                    <span class="navbar-dark-red" style="color:#bb1919">|</span>
+                    <span class="navbar-dark-red bottom-border">Entertainment & arts</span>
+                    <span class="navbar-dark-red" style="color:#bb1919">|</span>
+                    <span class="navbar-dark-red bottom-border">Video & Audio</span>
+                    <span class="navbar-dark-red" style="color:#bb1919">|</span>
+                    <span class="navbar-dark-red bottom-border drop-down">More &#x25BC;
+                        <div class="more-drop-down">
+                            <ul style="list-style-type: none;">
+                                <li>About</li>
+                                <li>Contact us</li>
+                            </ul>
+                        </div>
+                    </span>
+                    
+                </div>
+            </div>
+        </body>
+    </head>
+</html>

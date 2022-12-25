@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>
+        Form Validation
+    </title>
+    <script src="script/jquery-3.6.2.min.js"></script>
+    <style type="text/css">
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 200%;
+            margin: 0px;
+        }
+
+        input {
+            padding: 10px;
+            border: 1px solid black;
+            border-radius: 10px;
+            width: 250px;
+            text-align: center;
+            font-size: 15px;
+        }
+
+        #wrapper {
+            width: 600px;
+            margin: 10px auto 10px auto;
+        }
+
+        label {
+            margin-right: 20px;
+            position: relative;
+            width: 300px;
+            float: left;
+        }
+
+        #submitButton {
+            margin-left: 320px;
+            width: 100px;
+        }
+        #message{
+            font-size: 50%   !important;  /*overwrites any other css */
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper"> <!--centers every thing on page by its css-->
+
+        <h1>Form Validation</h1>
+        <div id="message"></div>
+        <p>
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" placeholder="abc@xyz.com">
+        </p>
+        <p>
+            <label for="phone">Telephone:</label>
+            <input type="text" id="phone" name="phone" placeholder="0123456789">
+        </p>
+        <p>
+            <label for="password">Password:</label>
+            <input type="text" id="password" name="password" placeholder="abc#xyz78551">
+        </p>
+        <p>
+            <label for="passwordConfirm">Confirm Password:</label>
+            <input type="text" id="passwordConfirm" name="passwordConfirm" placeholder="abc#xyz78551">
+        </p>
+        <p>
+            <input type="submit" id="submitButton" value="Sign Up">
+        </p>
+    </div>
+    <script type="text/javascript">
+        
+        function isEmail(email) {
+            var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            return regex.test(email);
+        }
+
+        $("#submitButton").click(function(){
+            var error="";
+            var success="You are successfully registered";
+            var missing="";
+            if($("#email").val()==""){
+                missing+="<li>email</li>";
+                $("#email").css("border","3px solid purple");
+            }
+            else if(isEmail($("#email").val())==false){
+                error+="<p>Email is invalid</p>";
+                $("#email").css("border","3px solid red");
+            }    
+            
+            if($("#phone").val()==""){
+                missing+="<li>Telephone</li>";
+                $("#phone").css("border","3px solid purple");
+            }else if($.isNumeric($("#phone").val())==false){
+                error+="<p>Telephone is invalid</p>";
+                $("#phone").css("border","3px solid red");
+            }
+            
+            if($("#password").val()=="" && $("#passwordConfirm").val()==""){
+                missing+="<li>Password</li><li>Confirm Passwrod</li>";
+                $("#password").css("border","3px solid purple");
+                $("#passwordConfirm").css("border","3px solid purple");
+            }else if($("#password").val()==""){
+                missing+="<li>Password</li>";
+                $("#password").css("border","3px solid red");
+                $("#passwordConfirm").css("border","3px solid red");
+            }else if($("#passwordConfirm").val()==""){
+                missing+="<li>Confirm Password</li>";
+                $("#password").css("border","3px solid red");
+                $("#passwordConfirm").css("border","3px solid red");
+            }else if($("#password").val()!=$("#passwordConfirm").val()){
+                error+="<p>Passwords do not match</P>";
+                $("#passwordConfirm").css("border","3px solid red");
+                $("#password").css("border","3px solid red");
+            }
+
+            if(missing!=""){
+                missing="Following fields are missing<ul>"+missing+"</ul>"
+            }
+            if(missing!="" || error!=""){
+                $("#message").css("color","red");
+                $("#message").html(missing+error);
+            }else{
+                $("#message").css("color","green");
+                $("#message").html(success);
+            }
+        });
+
+    </script>
+</body>
+
+</html>
